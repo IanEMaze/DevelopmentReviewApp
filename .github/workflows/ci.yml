@@ -1,0 +1,62 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  lint-and-test:
+    environment: production
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Checkout the Branch
+        uses: actions/checkout@v3
+        with:
+            ref: ${{ github.event.pull_request.head.ref }}
+            repository: ${{ github.event.pull_request.head.repo.full_name }}
+            fetch-depth: 0
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint code
+        run: pnpm run lint
+      
+      - name: Build service
+        run: |
+          npx sst build --stage production
+
+      - name: Deploy Backend to AWS
+        run: |
+          npx sst deploy -yes --stage production

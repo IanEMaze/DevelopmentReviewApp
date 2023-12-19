@@ -1,0 +1,14 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:node/recommended",
+    "plugin:@typescript-eslint/recommended" // Fixed plugin reference
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "warn"
+  }
+}

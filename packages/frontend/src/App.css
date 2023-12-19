@@ -1,0 +1,72 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+form {
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#submitButton {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #242424;
+  color: white;
+}
+
+#submitButton:hover {
+  border-color: #3F75F9;
+  color: #3F75F9;
+}
+
+#submitButton:active {
+  border-color: #3FF96F;
+  color: #3FF96F;
+}
+
+#resultText {
+  color: #3FF96F;
+}
+
+input:hover {
+  border-color: #3F75F9;
+}
+
+#name {
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+label {
+  padding: 10px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
