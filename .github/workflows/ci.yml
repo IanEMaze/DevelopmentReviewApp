@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 jobs:
-  lint-and-test:
+  ci-and-deploy:
     environment: production
     runs-on: ubuntu-latest
 
