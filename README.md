@@ -2,6 +2,9 @@
 
 This application is an API designed to handle the submission of reviews using OpenAPI specifications. It's built using AWS Serverless Stack Toolkit (SST) and TypeScript.
 
+## Frontend 
+![Frontend Image](./img/frontend.png)
+
 ## OpenAPI Specification
 
 ### Endpoint
