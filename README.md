@@ -14,7 +14,7 @@ This application is an API designed to handle the submission of reviews using Op
 ```json
 {
   "companyName": "Company XYZ",
-  "deadlineExperience": "Great",
+  "deadlineExperience": "Good",
   "communicationExperience": "Excellent",
   "uiExperience": "Good",
   "expectationsMet": "Yes",
@@ -47,7 +47,7 @@ This application is an API designed to handle the submission of reviews using Op
 
 ### Steps
 1. **Clone this repository.**
-2. **Install dependencies using** `npm install`.
+2. **Install dependencies using** `pnpm install`.
 3. **Set up AWS environment variables (`TABLE_NAME`, `REGION`).**
 4. **Deploy the application using SST.**
 
