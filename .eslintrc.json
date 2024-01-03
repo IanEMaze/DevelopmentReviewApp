@@ -9,6 +9,7 @@
   "plugins": ["prettier", "@typescript-eslint", "import"],
   "rules": {
     "no-unused-vars": "error",
-    "no-console": "warn"
+    "no-console": "warn",
+    "import/prefer-default-export": "off"
   }
 }
