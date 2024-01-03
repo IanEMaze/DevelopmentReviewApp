@@ -17,6 +17,9 @@ importers:
       '@tsconfig/node18':
         specifier: ^18.2.2
         version: 18.2.2
+      '@types/aws-lambda':
+        specifier: ^8.10.130
+        version: 8.10.130
       '@types/uuid':
         specifier: ^9.0.7
         version: 9.0.7
@@ -3368,6 +3371,10 @@ packages:
 
   /@tsconfig/node18@18.2.2:
     resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
+    dev: false
+
+  /@types/aws-lambda@8.10.130:
+    resolution: {integrity: sha512-HxTfLeGvD1wTJqIGwcBCpNmHKenja+We1e0cuzeIDFfbEj3ixnlTInyPR/81zAe0Ss/Ip12rFK6XNeMLVucOSg==}
     dev: false
 
   /@types/babel__core@7.20.5:

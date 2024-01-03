@@ -192,7 +192,9 @@ function App() {
           <br />
           <br />
           <input id="submitButton" type="submit" />
-          <p id="resultText" style={{color:textColor}}><b>{result}</b></p>
+          <p id="resultText" style={{ color: textColor }}>
+            <b>{result}</b>
+          </p>
         </form>
       </div>
     </>

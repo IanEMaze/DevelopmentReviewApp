@@ -4,11 +4,20 @@
     "airbnb",
     "prettier",
     "plugin:node/recommended",
-    "plugin:@typescript-eslint/recommended" // Fixed plugin reference
+    "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": ["prettier", "@typescript-eslint", "import"],
   "rules": {
     "no-unused-vars": "error",
-    "no-console": "warn"
+    "no-console": "warn",
+    "import/extensions": [
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ]
   }
 }

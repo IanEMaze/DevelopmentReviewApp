@@ -1,8 +1,8 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import { AppError } from 'components/error';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocument, UpdateCommandInput } from '@aws-sdk/lib-dynamodb';
 import { v4 as uuidv4 } from 'uuid';
+import AppError from '../components/error';
 
 const tableName = process.env.TABLE_NAME ?? '';
 const region = process.env.REGION ?? '';
@@ -11,29 +11,15 @@ const client = new DynamoDBClient({ region });
 const docClient = DynamoDBDocument.from(client);
 
 function validateData(data: { [x: string]: string }) {
-  // Define the list of properties to check
-  const requiredProperties = [
-    'companyName',
-    'deadlineExperience',
-    'communicationExperience',
-    'uiExperience',
-    'expectationsMet',
-    'recommendation',
-  ];
-
   // Loop through the properties and validate each one
-  for (const prop of requiredProperties) {
-    if (
-      !data.hasOwnProperty(prop) ||
-      data[prop] === null ||
-      data[prop] === ''
-    ) {
+  Object.entries(data).forEach(([key, value]) => {
+    if (!value || value.trim().length === 0) {
       throw new AppError(
-        `Invalid Data - "${prop}" is missing, null, or empty`,
+        `Invalid Data - "${key}" is missing, null, or empty`,
         400,
       );
     }
-  }
+  });
 }
 
 async function sendReview(data: { [x: string]: string }) {
@@ -46,7 +32,7 @@ async function sendReview(data: { [x: string]: string }) {
     recommendation,
   } = data;
 
-  const reviewId: String = uuidv4();
+  const reviewId: string = uuidv4();
 
   const reviewParams: UpdateCommandInput = {
     TableName: tableName,
@@ -63,7 +49,6 @@ async function sendReview(data: { [x: string]: string }) {
       ':r': recommendation,
     },
   };
-  console.log(reviewParams);
   try {
     await docClient.update(reviewParams);
   } catch (e) {
@@ -85,6 +70,7 @@ export const handler = async (event: APIGatewayProxyEvent) => {
     };
   } catch (e) {
     if (e instanceof AppError) {
+      console.log(`Error: ${e}`)
       return {
         statusCode: e.statusCode,
         body: JSON.stringify(`Error ${e.message}`),
