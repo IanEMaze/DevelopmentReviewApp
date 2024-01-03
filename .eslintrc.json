@@ -16,7 +16,8 @@
         "ts": "never",
         "tsx": "never",
         "js": "never",
-        "jsx": "never"
+        "jsx": "never",
+        "ignorePackages": true
       }
     ]
   }
