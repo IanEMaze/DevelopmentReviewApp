@@ -9,16 +9,6 @@
   "plugins": ["prettier", "@typescript-eslint", "import"],
   "rules": {
     "no-unused-vars": "error",
-    "no-console": "warn",
-    "import/extensions": [
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never",
-        "js": "never",
-        "jsx": "never",
-        "ignorePackages": true
-      }
-    ]
+    "no-console": "warn"
   }
 }
