@@ -70,7 +70,6 @@ export const handler = async (event: APIGatewayProxyEvent) => {
     };
   } catch (e) {
     if (e instanceof AppError) {
-      console.log(`Error: ${e}`)
       return {
         statusCode: e.statusCode,
         body: JSON.stringify(`Error ${e.message}`),
