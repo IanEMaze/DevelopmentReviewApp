@@ -51,10 +51,10 @@ jobs:
         run: pnpm install
 
       - name: Lint code
-        run: pnpm run lint --stage=runner
+        run: pnpm run lint 
 
       - name: Run Tests
-        run: pnpm run test
+        run: pnpm run test --stage=runner
       
       - name: Build service
         run: |
