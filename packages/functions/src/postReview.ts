@@ -7,7 +7,7 @@ import AppError from '../components/error';
 const tableName = process.env.TABLE_NAME ?? '';
 const region = process.env.REGION ?? '';
 
-const client = new DynamoDBClient({ region });
+const client = new DynamoDBClient({ region:"us-east-1" });
 const docClient = DynamoDBDocument.from(client);
 
 function validateData(data: { [x: string]: string }) {
@@ -22,7 +22,7 @@ function validateData(data: { [x: string]: string }) {
   });
 }
 
-async function sendReview(data: { [x: string]: string }) {
+export async function sendReview(data: { [x: string]: string }) {
   const {
     companyName,
     deadlineExperience,
