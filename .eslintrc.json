@@ -1,13 +1,12 @@
 {
-  "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb",
     "prettier",
-    "plugin:node/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:node/recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "import"],
+  "plugins": ["prettier"],
   "rules": {
+    "import/extensions":"off",
     "no-unused-vars": "error",
     "no-console": "warn",
     "import/prefer-default-export": "off"

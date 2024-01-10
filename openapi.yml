@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Review Submission API
+  version: 1.0.0
+paths:
+  /review:
+    post:
+      summary: Submit a review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewData'
+      responses:
+        '200':
+          description: Review successfully submitted
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Review Successfully Submitted
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Error Invalid Data - "property" is missing, null, or empty
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Error Internal Server Error
+components:
+  schemas:
+    ReviewData:
+      type: object
+      properties:
+        companyName:
+          type: string
+          example: 'Company XYZ'
+        deadlineExperience:
+          type: string
+          example: 'Great'
+        communicationExperience:
+          type: string
+          example: 'Excellent'
+        uiExperience:
+          type: string
+          example: 'Good'
+        expectationsMet:
+          type: string
+          example: 'Yes'
+        recommendation:
+          type: string
+          example: 'Yes'
+      required:
+        - companyName
+        - deadlineExperience
+        - communicationExperience
+        - uiExperience
+        - expectationsMet
+        - recommendation
