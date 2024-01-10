@@ -51,7 +51,7 @@ jobs:
         run: pnpm install
 
       - name: Lint code
-        run: pnpm run lint
+        run: pnpm run lint --stage=runner
 
       - name: Run Tests
         run: pnpm run test
